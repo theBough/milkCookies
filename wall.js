@@ -15,55 +15,63 @@ function Wall(x, y, w, h, col, show) {
 }
 function wallCollision() {
 
+ 
+} //end colision
+function wallLeftRight(){
   for (var i = 0; i < w.length; i++) {
-    //check if we hit the left of any wall
-    if (
+     if (
       p.y <= w[i].y + w[i].h &&
       p.y + p.h >= w[i].y &&
-      p.x <= w[i].x + w[i].w &&
-      p.x >= w[i].x &&
+      p.x -20 <= w[i].x + w[i].w &&
+      p.x -20>= w[i].x &&
       w[i].show
     ) {
-      p.x += p.speed;
+     
+      return true;
       
     }
 
     //check if we hit the right of any wall
-    if (
+    else if (
       p.y <= w[i].y + w[i].h &&
       p.y + p.h >= w[i].y &&
-      p.x + p.w >= w[i].x &&
-      p.x <= w[i].x + w[i].w &&
+      p.x + p.w+20 >= w[i].x &&
+      p.x +20<= w[i].x + w[i].w &&
       w[i].show
     ) {
-      p.x -= p.speed;
-     
+      
+      return true;
     }
+  }
+}
 
+function wallAboveBelow(){
+   for (var i = 0; i < w.length; i++) {
     if (
       p.x <= w[i].x + w[i].w &&
       p.x + p.w >= w[i].x &&
-      p.y <= w[i].y + w[i].h &&
-      p.y >= w[i].y &&
+      p.y -20<= w[i].y + w[i].h &&
+      p.y -20>= w[i].y &&
       w[i].show
     ) {
-      p.y += p.speed;
+       
+      return true;
 
     }
 
     //check if we hit the top of any wall
-    if (
+    else if (
       p.x <= w[i].x + w[i].w &&
       p.x + p.w >= w[i].x &&
-      p.y + p.h >= w[i].y &&
-      p.y <= w[i].y + w[i].h &&
+      p.y + p.h +20 >= w[i].y &&
+      p.y +20 <= w[i].y + w[i].h &&
       w[i].show
     ) {
-      p.y -= p.speed;
      
+      return true;
     }
   } //end loop
-} //end colision
+}
 
 function everythingWall() {
   for(i=0 ; i<w.length;i++){
